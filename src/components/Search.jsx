@@ -5,49 +5,35 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export const Search = () => {
-  const [input, setInput] = useState("");
+  const [input2, setInput2] = useState("");
   const [array, setArray] = useState([]);
 
-  //   useEffect(() => {
-  //     const gitFetcher = async () => {
-  //       // const api_key = "7c91776fb1267161889e298c3e7ceb4b";
-  //       const url = `https:api.mapbox.com/geocoding/v5/mapbox.places/${input}.json?access_token=pk.eyJ1IjoidHVydXV1dSIsImEiOiJjbDBhZW15ZHAwMGhjM2RtZjB6dnltZnhjIn0.HSb4dmJFSM2USxDkTsScDg`;
+  useEffect(() => {
+    const gitFetcher = async () => {
+      const url = `https:api.mapbox.com/geocoding/v5/mapbox.places/${input2}.json?access_token=pk.eyJ1IjoidHVydXV1dSIsImEiOiJjbDBhZW15ZHAwMGhjM2RtZjB6dnltZnhjIn0.HSb4dmJFSM2USxDkTsScDg`;
 
-  //       const result = await axios(url);
-  //       const data = result.data.features.map((user) => {
-  //         return user.place_name;
-  //       });
-  //       console.log(data);
-  //       setArray(data);
-  //       gitFetcher();
-  //     };
-  //   }, [input]);
-
-  const gitFetcher = async () => {
-    // const api_key = "7c91776fb1267161889e298c3e7ceb4b";
-    const url = `https:api.mapbox.com/geocoding/v5/mapbox.places/${input}.json?access_token=pk.eyJ1IjoidHVydXV1dSIsImEiOiJjbDBhZW15ZHAwMGhjM2RtZjB6dnltZnhjIn0.HSb4dmJFSM2USxDkTsScDg`;
-
-    const result = await axios(url);
-    const data = result.data.features.map((user) => {
-      return user.place_name;
-    });
-    console.log(data);
-    setArray(data);
-  };
+      const result = await axios(url);
+      const data = result.data.features.map((user) => {
+        return user.place_name;
+      });
+      console.log(data);
+      setArray(data.slice(0, 3));
+    };
+    gitFetcher();
+  }, [input2]);
 
   return (
     <div>
       <div className="w-[512px] h-[80px] px-[24px] py-[16px] bg-gray-100 flex rounded-[48px]">
         <IoIosSearch
           className="w-[48px] h-[48px] text-gray-400"
-          onChange={gitFetcher}
           width={48}
           height={48}
         />
         <input
           className="w-[400px]"
-          value={input}
-          onChange={(event) => setInput(event.target.value)}
+          value={input2}
+          onChange={(event) => setInput2(event.target.value)}
         ></input>
       </div>
       <div className="w-[512px] h-[200px] bg-gray-100 rounded-[24px]">

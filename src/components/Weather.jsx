@@ -13,6 +13,7 @@ export const Light = () => {
   const [tempMin, setTempMin] = useState("0");
   const [city, setCity] = useState("Location");
   const [condition, setCondition] = useState("");
+
   const gitFetcher = async () => {
     const api_key = "7c91776fb1267161889e298c3e7ceb4b";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=Metric&appid=${api_key}`;

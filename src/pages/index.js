@@ -6,9 +6,9 @@ export default function Home() {
       <div>
         <Search />
       </div>
-      {/* <div>
+      <div>
         <Light />
-      </div> */}
+      </div>
     </div>
   );
 }
